@@ -32,10 +32,12 @@ group :development do
 end
 
 group :test do
+  gem 'sqlite3'
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'rspec-rails'
   gem 'database_cleaner'
 end
+
 gem "devise", "~> 4.8"
