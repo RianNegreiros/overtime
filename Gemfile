@@ -42,4 +42,4 @@ end
 
 gem "devise", "~> 4.8"
 
-gem "bootstrap", "~> 5.1"
+gem 'bootstrap-sass', '~> 3.3'
