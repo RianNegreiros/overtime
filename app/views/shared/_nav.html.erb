@@ -1,0 +1,19 @@
+<div class="logo">
+  <h1>Time Tracker</h1>
+</div>
+
+<ul class="custom-nav nav nav-tabs">
+  <li class="<%= active?(root_path) %>">
+    <%= link_to "Home", root_path %>
+  </li>
+  <li>
+    <%= link_to "Time Entries", posts_path %>
+  </li>
+  <li>
+    <%= link_to "Edit Details", edit_user_registration_path %>
+  </li>
+  <li class="pull-right">
+    <%= link_to "Log out", destroy_user_session_path, method: :delete,
+                data: { confirm: "Log out from your account" } %>
+  </li>
+</ul>
