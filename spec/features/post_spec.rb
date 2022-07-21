@@ -7,4 +7,11 @@ describe 'navigate' do
       expect(page.status_code).to eq(200)
     end
   end
+
+  describe 'creation' do
+    it 'should has a new form that can be reached' do
+      visit new_post_path
+      expect(page.status_code).to eq(200)
+    end
+  end
 end
