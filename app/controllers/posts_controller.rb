@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: 'Your post was created successfully'
     else
+      flash[:danger] = @post.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -24,8 +25,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Your post was created successfully'
+      redirect_to @post, notice: 'Your post was edited successfully'
     else
+      flash[:danger] = @post.errors.full_messages.to_sentence
       render :edit
     end
   end
