@@ -53,6 +53,16 @@ describe 'navigate' do
     end
   end
   
+  describe 'new' do
+    before do
+      visit new_post_path
+    end
+    
+    it 'should has a link from the homepage' do
+      expect(page.status_code).to eq(200)
+    end
+  end
+  
   describe 'edit' do
     before do
       @post = FactoryGirl.create(:post)
