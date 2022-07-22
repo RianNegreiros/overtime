@@ -17,5 +17,6 @@ FactoryGirl.define do
     email { generate :email }
     password 'any_password'
     password_confirmation 'any_password'
+    type 'AdminUser'
   end
 end
