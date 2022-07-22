@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe "creation" do
     before do
-      @user = User.create(email: "any@mail.com", password: "any_password", password_confirmation: "any_password", first_name: "any_name", last_name: "any_name")
+      @user = FactoryGirl.create(:user)
     end
 
     it "can be created" do
