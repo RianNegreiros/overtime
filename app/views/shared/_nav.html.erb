@@ -1,18 +1,21 @@
 <div class='logo'>
   <h1>Time Tracker</h1>
 </div>
+
 <hr>
 
 <% if user_signed_in? %>
-<div class="nav-tabs">
-  <ul class="custom-nav nav nav-tabs">
-    <li class="<%= active?(root_path) %>"><%= link_to "Home", root_path %></li>
-    <li class="<%= active?(posts_path) %>"><%= link_to "Time Entries", posts_path %></li>
-    <li class="<%= active?(new_post_path) %>"><%= link_to "Add New Time Entries", new_post_path %></li>
-  </ul>
-  <ul class="custom-nav nav nav-tabs pull-right">
-    <li><%= link_to "TODO: Admin Dashboard", root_path %></li>
-    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-  </ul>
-</div>
+  <div class="nav-tabs">
+    <ul class="custom-nav nav nav-tabs">
+      <li class="<%= active?(root_path) %>"><%= link_to "Home", root_path %></li>
+      <li class="<%= active?(posts_path) %>"><%= link_to "Time Entries", posts_path %></li>
+      <li class="<%= active?(new_post_path) %>"><%= link_to "Add New Time Entries", new_post_path %></li>
+    </ul>
+    <ul class="custom-nav nav nav-tabs pull-right">
+      <% if current_user.type == 'AdminUser' %>
+        <li><%= link_to "Admin Dashboard", admin_root_path %></li>
+      <% end %>
+      <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    </ul>
+  </div>
 <% end %>
