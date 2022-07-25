@@ -8,7 +8,7 @@ class PostDashboard < Administrate::BaseDashboard
     rationale: Field::Text.with_options(searchable: true),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
-    status: Field::DateTime.with_options(searchable: true),
+    status: Field::String.with_options(searchable: true),
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
