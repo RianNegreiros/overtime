@@ -28,10 +28,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
     posts
     id
     email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
     first_name
     last_name
     type
