@@ -46,3 +46,5 @@ gem "devise", "~> 4.8"
 gem "bootstrap-sass", "~> 3.3"
 
 gem "administrate", "~> 0.17.0"
+
+gem "pundit", "~> 2.2"
