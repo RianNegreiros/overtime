@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  let(:user) { FactoryGirl.create(:user) }
+
+  let(:post) do
+    Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id)
+  end
+
   before do
     @user = FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
@@ -76,10 +82,15 @@ describe 'navigate' do
   
   describe 'delete' do
     it 'should be deleted' do
-      @post = FactoryGirl.create(:post)
-      @post.update(user_id: @user.id)
+      logout(:user)
+
+      delete_user = FactoryGirl.create(:user)
+      login_as(delete_user, :scope => :user)
+
+      post_to_delete = Post.create(date: Date.today, rationale: 'any_rationale', user_id: delete_user.id)
+
       visit posts_path
-      click_link("delete_post_#{@post.id}_from_index")
+      click_link("delete_post_#{post_to_delete.id}_from_index")
       expect(page.status_code).to eq(200)
     end
   end
