@@ -20,10 +20,22 @@ describe 'navigate' do
     end
 
     it 'should has list of posts' do
-      FactoryGirl.create(:post)
-      FactoryGirl.create(:second_post)
+      FactoryGirl.build_stubbed(:post)
+      FactoryGirl.build_stubbed(:second_post)
       visit posts_path
-      expect(page).to have_content(/any_rationale/)
+      expect(page).to have_content(/Rationale|content/)
+    end
+
+    it 'should has a scope so that only post creators can see their posts' do
+      Post.create(date: Date.today, rationale: "any_rationale", user_id: @user.id)
+      Post.create(date: Date.today, rationale: "any_rationale", user_id: @user.id)
+
+      other_user = User.create(first_name: 'other', last_name: 'user', email: "other@mail.com", password: "any_password", password_confirmation: "any_password")
+      Post.create(date: Date.today, rationale: "other_rationale", user_id: other_user.id)
+
+      visit posts_path
+
+      expect(page).to_not have_content(/other_rationale/)
     end
   end
 
@@ -62,22 +74,11 @@ describe 'navigate' do
     end
   end
   
-  describe 'new' do
-    before do
-      visit new_post_path
-    end
-    
-    it 'should has a link from the homepage' do
-      expect(page.status_code).to eq(200)
-    end
-  end
-  
   describe 'delete' do
-    before do
-      @post = FactoryGirl.create(:post)
-      visit posts_path
-    end
     it 'should be deleted' do
+      @post = FactoryGirl.create(:post)
+      @post.update(user_id: @user.id)
+      visit posts_path
       click_link("delete_post_#{@post.id}_from_index")
       expect(page.status_code).to eq(200)
     end
