@@ -82,17 +82,32 @@ describe 'navigate' do
       expect(page.status_code).to eq(200)
     end
   end
-  
+
   describe 'edit' do
     before do
-      @post = FactoryGirl.create(:post)
+      @edit_user = User.create(first_name: "any", last_name: "any", email: "any@mail.com", password: "any_password", password_confirmation: "any_password")
+      login_as(@edit_user, :scope => :user)
+      @edit_post = Post.create(date: Date.today, rationale: "any", user_id: @edit_user.id)
     end
 
-    it 'should be reached by clicking edit on index page' do
-      visit posts_path
+    it 'should be edited' do
+      visit edit_post_path(@edit_post)
 
-      click_link 'Edit'
-      expect(page.status_code).to eq(200)
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "Edited content"
+      click_on "Save"
+
+      expect(page).to have_content("Edited content")
+    end
+
+    it 'should not be edited by a non authorized user' do
+      logout(:user)
+      non_authorized_user = FactoryGirl.create(:non_authorized_user)
+      login_as(non_authorized_user, :scope => :user)
+
+      visit edit_post_path(@edit_post)
+
+      expect(current_path).to eq(root_path)
     end
   end
 end
