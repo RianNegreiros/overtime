@@ -25,6 +25,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "dotenv-rails", "~> 2.8"
 end
 
 group :development do
@@ -48,3 +49,5 @@ gem "bootstrap-sass", "~> 3.3"
 gem "administrate", "~> 0.17.0"
 
 gem "pundit", "~> 2.2"
+
+gem "twilio-ruby", "~> 5.70"
