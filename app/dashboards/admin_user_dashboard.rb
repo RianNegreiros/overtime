@@ -21,7 +21,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
     posts
     id
     email
-    type
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
