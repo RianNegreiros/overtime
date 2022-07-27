@@ -331,6 +331,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.9)
   importmap-rails
   jbuilder
+  kaminari (~> 1.2)
   pg (~> 1.1)
   puma (~> 5.0)
   pundit (~> 2.2)
