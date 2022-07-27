@@ -32,8 +32,8 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "should have length 10" do
-      @user.phone = "12345678910"
+    it "should have length 12" do
+      @user.phone = "5534567891011"
       expect(@user).to_not be_valid
     end
   end
