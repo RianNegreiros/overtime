@@ -51,3 +51,5 @@ gem "administrate", "~> 0.17.0"
 gem "pundit", "~> 2.2"
 
 gem "twilio-ruby", "~> 5.70"
+
+gem "kaminari", "~> 1.2"
