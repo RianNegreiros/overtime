@@ -6,8 +6,14 @@ Rails.application.routes.draw do
       resources :admin_users
 
       root to: "posts#index"
+  end
+
+  resources :posts do
+    member do
+      get :approve
     end
-  resources :posts
+  end
+
   devise_for :users, skip: %i[registrations]
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
