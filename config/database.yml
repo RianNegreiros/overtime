@@ -10,10 +10,19 @@ default: &default
 
 development:
   <<: *default
-  database: postgres_dev
+  database: postgres
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 54321
+
 test:
   <<: *default
   database: postgres_test
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 54321
 
 production:
   <<: *default
