@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  config.mailer_sender = 'no-reply@itscaffold.com'
+  config.mailer_sender = 'no-reply@riannegreiros.dev'
 
   require 'devise/orm/active_record'
 

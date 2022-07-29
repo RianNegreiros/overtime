@@ -53,3 +53,5 @@ gem "pundit", "~> 2.2"
 gem "twilio-ruby", "~> 5.70"
 
 gem "kaminari", "~> 1.2"
+
+gem "sendgrid-ruby", "~> 6.6"
