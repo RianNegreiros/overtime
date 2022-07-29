@@ -7,8 +7,8 @@
 <% if user_signed_in? %>
   <div class="nav-tabs">
     <ul class="custom-nav nav nav-tabs">
-      <li class="<%= active?(root_path) %>"><%= link_to "Home", root_path %></li>
-      <li class="<%= active?(posts_path) %>"><%= link_to "Time Entries", posts_path %></li>
+      <li class="<%= active?(root_path) %>"><%= link_to "", root_path, class: "glyphicon glyphicon-home" %></li>
+      <li class="<%= active?(posts_path) %>"><%= link_to "Entries", posts_path %></li>
       <%= render 'shared/audit_log_nav' if policy(AuditLog).index? %>
       <li class="<%= active?(new_post_path) %>"><%= link_to "Add New Time Entries", new_post_path, id: 'new_post_from_nav' %></li>
     </ul>
