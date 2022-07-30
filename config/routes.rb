@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :posts
       resources :users
       resources :admin_users
+      resources :employees
 
       root to: "posts#index"
   end
