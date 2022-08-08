@@ -4,7 +4,7 @@ describe 'navigate' do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id, overtime_request: 3.5)
+    Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id, daily_hours: 3.5)
   end
 
   before do
@@ -36,7 +36,7 @@ describe 'navigate' do
       Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id)
 
       other_user = User.create(first_name: 'other', last_name: 'user', email: "other@mail.com", password: "any_password", password_confirmation: "any_password")
-      Post.create(date: Date.today, rationale: "other_rationale", user_id: other_user.id, overtime_request: 3.5)
+      Post.create(date: Date.today, rationale: "other_rationale", user_id: other_user.id, daily_hours: 3.5)
 
       visit posts_path
 
@@ -62,7 +62,7 @@ describe 'navigate' do
       delete_user = FactoryGirl.create(:user)
       login_as(delete_user, :scope => :user)
 
-      post_to_delete = Post.create(date: Date.today, rationale: 'any_rationale', user_id: delete_user.id, overtime_request: 3.5)
+      post_to_delete = Post.create(date: Date.today, rationale: 'any_rationale', user_id: delete_user.id, daily_hours: 3.5)
 
       visit posts_path
 
@@ -83,7 +83,7 @@ describe 'navigate' do
     it 'should be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "any_rationale"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 3.5
 
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
@@ -91,7 +91,7 @@ describe 'navigate' do
     it 'should have a user associated it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "any_rationale"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 3.5
 
       click_on "Save"
 
