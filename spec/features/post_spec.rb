@@ -46,7 +46,7 @@ describe 'navigate' do
 
   describe 'new' do
     it 'should has a link from the homepage' do
-      employee = Employee.create(first_name: 'employee', last_name: 'employee', email: 'employee@mail.com', password: "123456", passsword_confirmation: "123456", phone: "111111111111")
+      employee = Employee.create(first_name: 'employee', last_name: 'employee', email: 'employee@mail.com', password: "123456", password_confirmation: "123456", phone: "111111111111")
       login_as(employee, :scope => :user)
       visit root_path
 
