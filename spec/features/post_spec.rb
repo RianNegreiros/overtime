@@ -4,7 +4,7 @@ describe 'navigate' do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id, daily_hours: 3.5)
+    Post.create(date: Date.today, work_performed: "any_work_performed", user_id: user.id, daily_hours: 3.5)
   end
 
   before do
@@ -28,19 +28,19 @@ describe 'navigate' do
       FactoryGirl.build_stubbed(:post)
       FactoryGirl.build_stubbed(:second_post)
       visit posts_path
-      expect(page).to have_content(/Rationale|content/)
+      expect(page).to have_content(/Work Performed|content/)
     end
 
     it 'should has a scope so that only post creators can see their posts' do
-      Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id)
-      Post.create(date: Date.today, rationale: "any_rationale", user_id: user.id)
+      Post.create(date: Date.today, work_performed: "any_work_performed", user_id: user.id)
+      Post.create(date: Date.today, work_performed: "any_work_performed", user_id: user.id)
 
       other_user = User.create(first_name: 'other', last_name: 'user', email: "other@mail.com", password: "any_password", password_confirmation: "any_password")
-      Post.create(date: Date.today, rationale: "other_rationale", user_id: other_user.id, daily_hours: 3.5)
+      Post.create(date: Date.today, work_performed: "other_work_performed", user_id: other_user.id, daily_hours: 3.5)
 
       visit posts_path
 
-      expect(page).to_not have_content(/other_rationale/)
+      expect(page).to_not have_content(/other_work_performed/)
     end
   end
 
@@ -62,7 +62,7 @@ describe 'navigate' do
       delete_user = FactoryGirl.create(:user)
       login_as(delete_user, :scope => :user)
 
-      post_to_delete = Post.create(date: Date.today, rationale: 'any_rationale', user_id: delete_user.id, daily_hours: 3.5)
+      post_to_delete = Post.create(date: Date.today, work_performed: 'any_work_performed', user_id: delete_user.id, daily_hours: 3.5)
 
       visit posts_path
 
@@ -82,7 +82,7 @@ describe 'navigate' do
 
     it 'should be created from new form page' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "any_rationale"
+      fill_in 'post[work_performed]', with: "any_work_performed"
       fill_in 'post[daily_hours]', with: 3.5
 
       expect { click_on "Save" }.to change(Post, :count).by(1)
@@ -90,12 +90,12 @@ describe 'navigate' do
 
     it 'should have a user associated it' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "any_rationale"
+      fill_in 'post[work_performed]', with: "any_work_performed"
       fill_in 'post[daily_hours]', with: 3.5
 
       click_on "Save"
 
-      expect(User.last.posts.last.rationale).to eq("any_rationale")
+      expect(User.last.posts.last.work_performed).to eq("any_work_performed")
     end
   end
 
@@ -105,7 +105,7 @@ describe 'navigate' do
       visit edit_post_path(post)
 
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Edited content"
+      fill_in 'post[work_performed]', with: "Edited content"
       click_on "Save"
 
       expect(page).to have_content("Edited content")
