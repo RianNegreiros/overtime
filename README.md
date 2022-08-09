@@ -11,3 +11,6 @@
 - Needs to be documented if employee did not log overtime
 - Audit log for each text message
 - Quest users and non admins can not create a new account
+- Email summary to mangers for approval
+- Needs to be documented if employee did not log overtime
+- Audit log for each text message
