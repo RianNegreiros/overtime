@@ -25,7 +25,6 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails", "~> 2.8"
 end
 
 group :development do
@@ -55,3 +54,5 @@ gem "twilio-ruby", "~> 5.70"
 gem "kaminari", "~> 1.2"
 
 gem "sendgrid-ruby", "~> 6.6"
+
+gem "dotenv-rails"
