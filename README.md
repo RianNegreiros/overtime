@@ -26,3 +26,6 @@ Password: 123456
 
 Email: user@test.com
 Password: 123456
+
+### Preview
+![Application image preview](/app/assets/images/image-app-preview.png)
