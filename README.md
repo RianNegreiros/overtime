@@ -14,3 +14,15 @@
 - Email summary to mangers for approval
 - Needs to be documented if employee did not log overtime
 - Audit log for each text message
+
+## To test the application you can
+
+### Log in as **Admin** using
+
+Email: admin@test.com
+Password: 123456
+
+## And **User**
+
+Email: user@test.com
+Password: 123456
